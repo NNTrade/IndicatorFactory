@@ -1,0 +1,1 @@
+MA_COL_NAME = "MA"

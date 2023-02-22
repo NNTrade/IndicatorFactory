@@ -1,4 +1,4 @@
-from typing import Dict, Callable, List, Tuple
+from typing import Dict, Callable, List
 from .indicator_settings import IndicatorSettings
 from .abs_indicator import AbsIndicator
 from logging import getLogger

@@ -1,5 +1,5 @@
 from .builder import get_ma
-from .settings_builder import MASettingsBuilder
+from .settings_builder import MASettingsBuilder, MASettings
 from ...indicator_factory import IndicatorFactory
 from .columns import MA_COL_NAME
 

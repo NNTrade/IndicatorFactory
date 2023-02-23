@@ -1,5 +1,14 @@
 # IndicatorFactory
 Base repository for indicator.
+## Architecture
+- Created by
+```sh
+pyreverse -o png -p src src
+```
+ 
+![Packages](./architecture//packages_p.png)
+
+![Classes](./architecture/classes_p.png)
 
 ## Base classes
 ### IndicatorFactory

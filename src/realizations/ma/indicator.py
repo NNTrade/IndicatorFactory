@@ -53,7 +53,7 @@ class ema(AbsIndicator):
 
 class sma(AbsIndicator):
   def __init__(self, settings: IndicatorSettings) -> None:
-    self.__period = settings.parameters["period"]
+    self.__period = settings.parameters[MASettingsBuilder.PERIOD_PARAMETER_NAME]
     # self.__shift = -(self.__period - 1)
     self.last_values = []
     self.clear()

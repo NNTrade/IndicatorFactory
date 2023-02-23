@@ -2,17 +2,25 @@ from __future__ import annotations
 from ...indicator_settings import IndicatorSettingsBuilder, Dict, IndicatorSettings
 
 
+class MASettings(IndicatorSettings):
+  def __init__(self, indicator_type: str, parameters: Dict[str, float]) -> None:
+    super().__init__(indicator_type, parameters)
+
+  @property
+  def period(self) -> float:
+    return self._parameters[MASettingsBuilder.PARAMETERS_DICT_FIELD]
+
 class MASettingsBuilder(IndicatorSettingsBuilder):
   PERIOD_PARAMETER_NAME = "priod"
   SMA_NAME = "SMA"
   EMA_NAME = "EMA"
 
   @staticmethod
-  def create_sma_setting(period: float) -> IndicatorSettings:
+  def create_sma_setting(period: float) -> MASettings:
     return MASettingsBuilder(MASettingsBuilder.SMA_NAME, period).build()
 
   @staticmethod
-  def create_ema_setting(period: float) -> IndicatorSettings:
+  def create_ema_setting(period: float) -> MASettings:
     return MASettingsBuilder(MASettingsBuilder.EMA_NAME, period).build()
 
   def __init__(self, indicator_type: str, period: float) -> None:
@@ -33,3 +41,6 @@ class MASettingsBuilder(IndicatorSettingsBuilder):
   def set_period(self, new_period: float) -> MASettingsBuilder:
     self.period = new_period
     return self
+
+  def build(self) -> MASettings:
+    return MASettings(self.indicator_type, self.parameters)

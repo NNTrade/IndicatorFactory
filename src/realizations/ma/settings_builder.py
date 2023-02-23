@@ -16,7 +16,7 @@ class MASettings(IndicatorSettings):
 
     @property
     def period(self) -> float:
-        return self._parameters[MASettingsBuilder.PARAMETERS_DICT_FIELD]
+        return self._parameters[MASettingsBuilder.PERIOD_PARAMETER_NAME]
 
 
 class MASettingsBuilder(IndicatorSettingsBuilder):

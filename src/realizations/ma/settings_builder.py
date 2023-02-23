@@ -8,6 +8,10 @@ class MASettings(IndicatorSettings):
         return MASettings(indicator_settigns.indicator_type, indicator_settigns.parameters)
 
     def __init__(self, indicator_type: str, parameters: Dict[str, float]) -> None:
+        if MASettingsBuilder.PERIOD_PARAMETER_NAME not in parameters.keys():
+            raise Exception(
+                f"Parameters does not have {MASettingsBuilder.PERIOD_PARAMETER_NAME}")
+
         super().__init__(indicator_type, parameters)
 
     @property

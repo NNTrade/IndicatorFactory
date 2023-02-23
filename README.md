@@ -5,10 +5,10 @@ Base repository for indicator.
 ```sh
 pyreverse -o png -p src src
 ```
- 
-![Packages](./architecture//packages_p.png)
 
-![Classes](./architecture/classes_p.png)
+![Packages](./architecture/packages_src.png)
+
+![Classes](./architecture/classes_src.png)
 
 ## Base classes
 ### IndicatorFactory

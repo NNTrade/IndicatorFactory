@@ -37,6 +37,9 @@ class IndicatorSettings:
         IndicatorSettings.PARAMETERS_DICT_FIELD: self.parameters
     }
 
+  def copy(self)->IndicatorSettings:
+    return IndicatorSettings(self._indicator_type, self._parameters.copy())
+
 class IndicatorSettingsBuilder(IndicatorSettings):
 
     def __init__(self, indicator_type: str = None,

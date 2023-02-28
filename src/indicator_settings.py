@@ -42,6 +42,10 @@ class IndicatorSettings:
 
 class IndicatorSettingsBuilder(IndicatorSettings):
 
+    @staticmethod
+    def from_dict(config: Dict[str, any]) -> IndicatorSettingsBuilder:
+       return IndicatorSettingsBuilder(config[IndicatorSettings.TYPE_DICT_FIELD], config[IndicatorSettings.PARAMETERS_DICT_FIELD])
+    
     def __init__(self, indicator_type: str = None,
                  args: Dict[str, float] = {}) -> None:
         super().__init__(indicator_type, args.copy())

@@ -18,9 +18,6 @@ class MASettings(IndicatorSettings):
     def period(self) -> float:
         return self._parameters[MASettingsBuilder.PERIOD_PARAMETER_NAME]
 
-    def copy(self) -> MASettings:
-        return MASettings(self._indicator_type, self._parameters.copy())
-
 class MASettingsBuilder(IndicatorSettingsBuilder):
     PERIOD_PARAMETER_NAME = "priod"
     SMA_NAME = "SMA"
@@ -55,3 +52,6 @@ class MASettingsBuilder(IndicatorSettingsBuilder):
 
     def build(self) -> MASettings:
         return MASettings(self.indicator_type, self.parameters)
+
+    def copy(self) -> MASettingsBuilder:
+        return MASettingsBuilder(self._indicator_type, self._parameters.copy())

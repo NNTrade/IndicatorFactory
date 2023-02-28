@@ -63,7 +63,7 @@ class IndicatorSettingsBuilder(__baseSettings):
         return self._indicator_type
 
     @indicator_type.setter
-    def indicator_type(self, new_value: str) -> float:
+    def indicator_type(self, new_value: str):
         self._type = new_value
 
     def set_indicator_type(self, new_indictor_type: str) -> IndicatorSettingsBuilder:

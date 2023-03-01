@@ -5,7 +5,8 @@ from ...indicator_settings import IndicatorSettingsBuilder, Dict, IndicatorSetti
 class MASettings(IndicatorSettings):
     @staticmethod
     def wrap(indicator_settigns: IndicatorSettings) -> MASettings:
-        return MASettings(indicator_settigns.indicator_type, indicator_settigns.parameters)
+        return indicator_settigns if isinstance(indicator_settigns, MASettings) \
+                                  else MASettings(indicator_settigns.indicator_type, indicator_settigns.parameters)
 
     def __init__(self, indicator_type: str, parameters: Dict[str, float]) -> None:
         if MASettingsBuilder.PERIOD_PARAMETER_NAME not in parameters.keys():
@@ -19,7 +20,7 @@ class MASettings(IndicatorSettings):
         return self._parameters[MASettingsBuilder.PERIOD_PARAMETER_NAME]
 
 class MASettingsBuilder(IndicatorSettingsBuilder):
-    PERIOD_PARAMETER_NAME = "priod"
+    PERIOD_PARAMETER_NAME = "period"
     SMA_NAME = "SMA"
     EMA_NAME = "EMA"
 

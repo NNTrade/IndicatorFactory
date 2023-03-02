@@ -1,7 +1,7 @@
 from __future__ import annotations
 from abc import ABC
 from typing import Dict
-import hashlib
+from .const_hash import const_hash_arr
 
 def _isinstance(other) -> bool:
     return isinstance(other, __baseSettings)
@@ -30,8 +30,8 @@ class IndicatorSettings(__baseSettings):
 
     def __init__(self, indicator_type: str, parameters: Dict[str, float]) -> None:
         super().__init__(indicator_type, parameters)
-        self.__hash = hashlib.sha256(self._indicator_type).hexdigest() * \
-            hashlib.sha256(frozenset(self.parameters.items())).hexdigest()
+        self.__hash = const_hash_arr(
+            [self._indicator_type, *[k+str(v) for k, v in self.parameters.items()]])
         pass
 
     @property

@@ -2,6 +2,8 @@ from __future__ import annotations
 from abc import ABC
 from typing import Dict
 
+def _isinstance(other) -> bool:
+    return isinstance(other, __baseSettings)
 
 class __baseSettings(ABC):
     def __init__(self, indicator_type: str, parameters: Dict[str, float]) -> None:
@@ -18,9 +20,8 @@ class __baseSettings(ABC):
         return str(self.to_dict())
 
     def __eq__(self, other: __baseSettings):
-        if not issubclass(other, __baseSettings):
-            return False
-        return self._indicator_type == other._indicator_type and self._parameters == other._parameters
+        return _isinstance(other) and \
+            self._indicator_type == other._indicator_type and self._parameters == other._parameters
 
 class IndicatorSettings(__baseSettings):
     TYPE_DICT_FIELD = "type"

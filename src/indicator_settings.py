@@ -18,7 +18,7 @@ class __baseSettings(ABC):
         return str(self.to_dict())
 
     def __eq__(self, other: __baseSettings):
-        if self.__class__ != other.__class__:
+        if not issubclass(other, __baseSettings):
             return False
         return self._indicator_type == other._indicator_type and self._parameters == other._parameters
 
